@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src='./jquery-3.4.1.min.js'></script>
+    <script src='./main.js'></script>
+    <style type="text/css">
+
+        body {
+            white-space: nowrap;
+            min-width: 450px;
+            background-color: #fbfbfb;
+            color: #666666;
+            font-size: 1em;
+            /* font-size: 18px; */
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.8;
+            padding: 0 20px 20px;
+            margin: 0;
+        }
+
+        a {
+            color: #326DE6;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        table {
+            width: 100%;
+        }
+
+        button {
+            background-color: #2681d8;
+            color: #fff;
+            font-family: Larsseit,Arial,sans-serif;
+            display: inline-flex;
+            align-items: center;
+            border-radius: .25rem;
+            font-weight: 700;
+            text-align: center;
+            cursor: pointer;
+            touch-action: manipulation;
+            height: 2.75rem;
+            padding: 1px 1rem;
+            font-size: .9375rem;
+            line-height: 1.375rem;
+            border: none;
+            overflow: visible;
+            -webkit-appearance: button;
+        }
+
+        button:hover {
+            background-color: #155e9b;
+            color: #fff;
+        }
+
+        button:active {
+            background-color: #2d2f3b;
+            color: #fff;
+        }
+
+        button:disabled {
+            background-color: #2d2f3b;
+        }
+
+        select {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            -ms-appearance: none;
+            appearance: none;
+            outline: 0;
+            box-shadow: none;
+            border: 1px solid #ccc;
+            background: #fff;
+            background-image: none;
+            color: #2681d8;
+        }
+
+        /* Remove IE arrow */
+        select::-ms-expand {
+            display: none;
+        }
+
+        /* Custom Select */
+        .select {
+            position: relative;
+            display: flex;
+            width: auto;
+            height: 2.4em;
+            line-height: 2.4;
+            background: #fff;
+            overflow: hidden;
+            border-radius: .25em;
+        }
+
+        select {
+            flex: 1;
+            padding: 0 .5em;
+            color: #4c4b4b;
+            cursor: pointer;
+            font-size: 0.95em;
+        }
+
+        /* Arrow */
+        .select::after {
+            content: '\25BC';
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: 0 1em;
+            background: #2681d8;
+            cursor: pointer;
+            pointer-events: none;
+            -webkit-transition: .25s all ease;
+            -o-transition: .25s all ease;
+            transition: .25s all ease;
+            color: #fff;
+        }
+
+        /* Transition */
+        .select:hover::after {
+            color: #fff;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        body.active-connections-loading #headerActiveConnections,
+        body.new-connections-loading #headerNewConnection,
+        a.loading-kill-operation {
+
+            background-image: url(loading.gif);
+            display: block;
+            background-position: right;
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+        a.loading-kill-operation {
+            display: block;
+            width: 17px;
+        }
+
+        #activeConnections > tr > * {
+            padding-right: 5px;
+        }
+
+        #activeConnections > tr > *:last-child {
+            text-align: right;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<form id="form">
+    <h2 id="headerNewConnection">Create New Connection</h2>
+    <table id="newConnection">
+        <tr>
+            <td>Namespace</td>
+            <td>
+                <div class="select"><select name="namespace" id="namespaces"></select></div>
+            </td>
+        </tr>
+        <tr id="servicesSection">
+            <td>Service</td>
+            <td>
+                <div class="select"><select name="service" placeholder="Please first select a namespace"
+                                            id="services">
+
+                </select></div>
+            </td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td id="submit" class="hidden">
+                <button type="submit">Connect</button>
+            </td>
+        </tr>
+    </table>
+
+    <h2 id="headerActiveConnections">Active Connections</h2>
+    <table id="activeConnections">
+
+    </table>
+</form>
+</body>
+</html>
